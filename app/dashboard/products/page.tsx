@@ -547,7 +547,7 @@ function ProductsContent() {
                         <div className="flex items-center justify-end gap-1">
 
                           <Link
-                            href={`/catalog/products/${product.id}`}
+                            href={`/dashboard/products/${product.id}`}
                             title="Lihat detail"
                             className="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
                           >

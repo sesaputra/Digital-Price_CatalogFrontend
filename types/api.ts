@@ -27,7 +27,6 @@ export interface ProductType {
   name: string;
   category?: Category | null;
 }
-
 export interface ProductVariant {
   id: number;
   name: string;
@@ -40,13 +39,10 @@ export interface Product {
   name: string;
   sku: string | null;
   description: string | null;
-
+  is_public: boolean;
   category: Category | null;
-
   product_type: ProductType | null;
-
   brand: Brand | null;
-
   variants: ProductVariant[];
 }
 
