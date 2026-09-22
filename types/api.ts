@@ -53,18 +53,21 @@ export interface Product {
 export interface PaginatedResponse<T> {
   data: T[];
 
-  current_page: number;
-  last_page: number;
-  per_page: number;
-  total: number;
+  links: {
+    first: string | null;
+    last: string | null;
+    prev: string | null;
+    next: string | null;
+  };
 
-  first_page_url: string | null;
-  last_page_url: string | null;
-  next_page_url: string | null;
-  prev_page_url: string | null;
-
-  from: number | null;
-  to: number | null;
+  meta: {
+    current_page: number;
+    from: number | null;
+    last_page: number;
+    per_page: number;
+    to: number | null;
+    total: number;
+  };
 }
 
 export type ProductResponse =

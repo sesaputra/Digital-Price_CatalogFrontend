@@ -6,6 +6,23 @@ if (!API_URL) {
   );
 }
 
+/**
+ * =========================================================
+ * PRIVATE API
+ * =========================================================
+ *
+ * Digunakan untuk:
+ * - Login
+ * - Logout
+ * - Dashboard
+ * - CRUD produk
+ * - CRUD kategori
+ * - CRUD brand
+ * - CRUD product type
+ *
+ * Membawa Bearer Token jika tersedia.
+ */
+
 export async function apiFetch<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -56,6 +73,12 @@ export async function apiFetch<T>(
   return data;
 }
 
+/**
+ * =========================================================
+ * LOGOUT
+ * =========================================================
+ */
+
 export async function logout() {
   const token =
     typeof window !== "undefined"
@@ -78,16 +101,35 @@ export async function logout() {
   }
 }
 
+/**
+ * =========================================================
+ * PUBLIC API
+ * =========================================================
+ *
+ * Digunakan untuk:
+ * - Katalog publik
+ * - Detail produk publik
+ * - Melihat harga tanpa login
+ *
+ * Tidak mengirim Bearer Token.
+ */
+
 export async function publicApiFetch<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
   const headers = new Headers(options.headers);
 
-  headers.set("Accept", "application/json");
+  headers.set(
+    "Accept",
+    "application/json"
+  );
 
   if (options.body) {
-    headers.set("Content-Type", "application/json");
+    headers.set(
+      "Content-Type",
+      "application/json"
+    );
   }
 
   const response = await fetch(
@@ -109,3 +151,4 @@ export async function publicApiFetch<T>(
 
   return data;
 }
+

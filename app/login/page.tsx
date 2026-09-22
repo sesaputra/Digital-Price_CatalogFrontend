@@ -43,7 +43,7 @@ export default function LoginPage() {
         "user",
         JSON.stringify(response.user)
     );
-    router.push("/catalog");
+    router.push("/dashboard/products");
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
