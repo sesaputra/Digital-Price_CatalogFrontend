@@ -27,7 +27,6 @@ export interface ProductType {
   name: string;
   category?: Category | null;
 }
-
 export interface ProductVariant {
   id: number;
   name: string;
@@ -40,31 +39,31 @@ export interface Product {
   name: string;
   sku: string | null;
   description: string | null;
-
+  is_public: boolean;
   category: Category | null;
-
   product_type: ProductType | null;
-
   brand: Brand | null;
-
   variants: ProductVariant[];
 }
 
 export interface PaginatedResponse<T> {
   data: T[];
 
-  current_page: number;
-  last_page: number;
-  per_page: number;
-  total: number;
+  links: {
+    first: string | null;
+    last: string | null;
+    prev: string | null;
+    next: string | null;
+  };
 
-  first_page_url: string | null;
-  last_page_url: string | null;
-  next_page_url: string | null;
-  prev_page_url: string | null;
-
-  from: number | null;
-  to: number | null;
+  meta: {
+    current_page: number;
+    from: number | null;
+    last_page: number;
+    per_page: number;
+    to: number | null;
+    total: number;
+  };
 }
 
 export type ProductResponse =
